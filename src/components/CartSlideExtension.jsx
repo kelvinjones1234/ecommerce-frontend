@@ -35,19 +35,21 @@ const CartSlideExtension = () => {
         </h2>
 
         {/* Content section with scroll */}
-        <div className="overflow-y-scroll flex-1 p-4 space-y-4 custom-scrollbar">
+        <div className="overflow-y-scroll flex-1 py-4 pr-4 space-y-4 custom-scrollbar text-[.7rem] tracking-[.05rem] text-gray-700">
           {cartItems.map((items) => (
-            <div key={items.id} className="flex space-x-4">
-              <img
-                src={items.image}
-                alt={items.name}
-                className="w-20 h-20 object-cover"
-              />
+            <div key={items.id} className="flex gap-x-4">
               <div>
-                <p className="font-semibold">{items.name}</p>
-                <p className="text-sm">Price: ₦{items.price}</p>
-                <p className="text-sm">Quantity: {items.quantity}</p>
-                <button className="mt-2 px-4 py-2 bg-black text-white rounded">
+                <img
+                  src={items.image}
+                  alt={items.name}
+                  className="w-20 h-20 object-cover"
+                />
+              </div>
+              <div>
+                <p className="font-semibold uppercase">{items.name}</p>
+                <p className="">Price: ₦{items.price}</p>
+                <p className="">Quantity: {items.quantity}</p>
+                <button className="mt-2 px-4 py-1 bg-black text-white hover:bg-gray-800 transition-colors">
                   Add to Cart
                 </button>
               </div>
