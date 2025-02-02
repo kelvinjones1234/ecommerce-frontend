@@ -40,8 +40,8 @@ function AppContent() {
       </div>
 
       {/* Main content */}
-      {/* <ProductDetailPage /> */}
-      <HomePage />
+      <ProductDetailPage />
+      {/* <HomePage /> */}
     </>
   );
 }

@@ -34,14 +34,21 @@ const MobileNav = () => {
             Madu<br></br>Pet<br></br>Exclusive
           </div>
           <div className="right flex items-center justify-between gap-7 flex-1">
-            <RiSearchLine size={20} />
-            <VscAccount scale={35} className="hidden lg:block" />
-            <RiShoppingCart2Line
+            <div className="p-2 cursor-pointer">
+              <RiSearchLine size={20} />
+            </div>
+            <div className="hidden lg:block p-2 cursor-pointer">
+              <VscAccount scale={35} />
+            </div>
+            <div
+              className="cursor-pointer p-2"
               size={20}
               onClick={() => {
                 toggleCart();
               }}
-            />
+            >
+              <RiShoppingCart2Line />
+            </div>
           </div>
         </div>
       </div>
