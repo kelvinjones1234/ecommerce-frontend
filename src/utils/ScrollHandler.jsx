@@ -20,7 +20,7 @@ const ScrollHandler = ({ children }) => {
       if (currentScrollTop < lastScrollTop) {
         // Scrolling up
         setIsScrollingUp(true);
-        if (currentScrollTop > 50) {
+        if (currentScrollTop > 130) {
           setScrolled(true);
         }
       } else {

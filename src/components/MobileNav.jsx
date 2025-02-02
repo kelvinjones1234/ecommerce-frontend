@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { RiMenu2Line, RiSearchLine, RiShoppingCart2Line } from "react-icons/ri";
 import { VscAccount } from "react-icons/vsc";
 import MobileMenu from "./MobileMenu";
+import { useCart } from "../context/CartContext";
 
 const MobileNav = () => {
   const [menuToggle, setMenuToggle] = useState(false);
+  const { toggleCart } = useCart();
 
   const handleMenuToggle = () => {
     setMenuToggle((prev) => !prev); // Toggle the state
@@ -34,7 +36,12 @@ const MobileNav = () => {
           <div className="right flex items-center justify-between gap-7 flex-1">
             <RiSearchLine size={20} />
             <VscAccount scale={35} className="hidden lg:block" />
-            <RiShoppingCart2Line size={20} />
+            <RiShoppingCart2Line
+              size={20}
+              onClick={() => {
+                toggleCart();
+              }}
+            />
           </div>
         </div>
       </div>

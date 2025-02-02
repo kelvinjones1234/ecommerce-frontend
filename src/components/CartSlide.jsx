@@ -3,7 +3,7 @@ import { X, Minus, Plus } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
 const CartSlide = () => {
-  const { toggleCart, closeCart } = useCart();
+  const { closeCart } = useCart();
   const cartItems = [
     {
       name: "Dog Blanket Nap",
@@ -34,8 +34,8 @@ const CartSlide = () => {
   return (
     <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-lg p-4 flex flex-col">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">CART</h2>
-        <button className="p-1">
+        <h2 className="text-[.9rem] tracking-[.2rem]">CART</h2>
+        <button className="p-2 bg-gray-100 rounded-full">
           <X size={20} onClick={() => closeCart()} />
         </button>
       </div>
@@ -44,9 +44,12 @@ const CartSlide = () => {
         You are eligible for free shipping.
       </div>
 
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto text-[.8rem] tracking-[.1rem]">
         {cartItems.map((item, index) => (
-          <div key={index} className="py-4 border-b flex">
+          <div
+            key={index}
+            className="py-6 border-b-[.2rem] border-gray-400 flex"
+          >
             <img
               src={item.image}
               alt={item.name}
@@ -76,14 +79,14 @@ const CartSlide = () => {
                     <Plus size={16} />
                   </button>
                 </div>
-                <span className="font-medium">${item.price.toFixed(2)}</span>
+                <span className="font-medium">₦{item.price.toFixed(2)}</span>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 border-t pt-4">
+      <div className="mt-4 border-t pt-4 text-[.8rem]">
         <div className="flex items-center border-b pb-4">
           <span className="flex-1">NOTE</span>
           <button className="text-gray-600">
@@ -100,18 +103,20 @@ const CartSlide = () => {
 
         <div className="flex justify-between items-center py-4">
           <span>Subtotal</span>
-          <span className="font-medium">${subtotal.toFixed(2)} NZD</span>
+          <span className="font-medium">₦{subtotal.toFixed(2)}</span>
         </div>
 
         <p className="text-sm text-gray-500 mb-4">
           Tax included. Shipping calculated at checkout.
         </p>
 
-        <button className="w-full bg-black text-white py-3 mb-2">
+        <button className="w-full bg-black text-white py-3 mb-2 tracking-[.2rem]">
           CHECK OUT
         </button>
 
-        <button className="w-full text-center py-2">View cart</button>
+        <button className="w-full text-center py-2 tracking-[.1rem]">
+          View cart
+        </button>
       </div>
     </div>
   );

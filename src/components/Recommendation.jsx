@@ -100,10 +100,10 @@ const ProductCard = ({ product }) => {
         </h3>
         <p className="text-sm text-gray-900">
           {product.price.max
-            ? `$${product.price.min.toFixed(2)} – $${product.price.max.toFixed(
+            ? `₦${product.price.min.toFixed(2)} – $${product.price.max.toFixed(
                 2
               )}`
-            : `$${product.price.min.toFixed(2)}`}
+            : `₦${product.price.min.toFixed(2)}`}
         </p>
       </div>
     </motion.div>

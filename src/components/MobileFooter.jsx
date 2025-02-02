@@ -73,7 +73,7 @@ const MobileFooter = () => {
         ))}
 
         <p className="text-xs text-gray-500 text-center py-4">
-          © 2024, PraiseMedia. All rights reserved.
+          © 2025, PraiseMedia. All rights reserved.
         </p>
       </div>
       <FooterMenu />

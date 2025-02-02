@@ -54,14 +54,12 @@ const ProductDetail = () => {
         {/* Right Column - Product Info */}
         <div className="flex flex-col gap-8">
           {/* Product Title and Price */}
-          <div>
+          <div className="pt-[3rem]">
             <h1 className="text-3xl">Dog Mini Travel Set</h1>
-            <p className="text-2xl mt-2">$66.00</p>
+            <p className="text-2xl mt-2">₦66.00</p>
           </div>
 
-          {/* Purchase Buttons */}
           <div className="flex flex-col gap-4">
-            {/* Your application's components */}
             {/* <button className="w-full tracking-[.2rem] border border-black text-black text-[.9rem] py-4 rounded-lg hover:bg-black hover:text-white transition-colors">
               ADD TO CART
             </button> */}

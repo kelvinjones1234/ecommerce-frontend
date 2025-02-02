@@ -5,7 +5,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import HomePage from "./pages/HomePage";
 
 function AppContent() {
-  const { isCartOpen, closeCart, setIsCartOpen } = useCart();
+  const { isCartOpen, closeCart } = useCart();
 
   // Prevent scrolling when cart is open
   useEffect(() => {
@@ -40,8 +40,8 @@ function AppContent() {
       </div>
 
       {/* Main content */}
-      <ProductDetailPage />
-      {/* <HomePage /> */}
+      {/* <ProductDetailPage /> */}
+      <HomePage />
     </>
   );
 }

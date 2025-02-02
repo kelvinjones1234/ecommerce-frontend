@@ -1,44 +1,26 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import img_one from "../assets/img/three.jpeg";
 import img_two from "../assets/img/img_two.jpg";
 import img_four from "../assets/img/four.jpeg";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ShopNowViewAllButton from "../components/ShopNowViewAllButton";
-import MobileFooter from "../components/MobileFooter";
-import DesktopFooter from "../components/DesktopFooter";
-import ScrollHandler from "../utils/ScrollHandler"; // Import the ScrollHandler component
+import ScrollHandler from "../utils/ScrollHandler";
+import MessageBar from "../components/MessageBar";
+import NavbarWrapper from "../components/NavbarWrapper";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   return (
     <ScrollHandler>
       {({ scrolled, isScrollingUp, navbarVariants, heroContentVariants }) => (
         <>
-          <motion.div
-            className="message-bar w-full text-white uppercase flex justify-between font-thin bg-black py-[.3rem] px-[1.5rem] lg:px-[5rem]"
-            initial="hidden"
-            animate="visible"
-          >
-            <HiChevronLeft size={20} color="white" />
-            december sale is currently on...
-            <HiChevronRight size={20} color="white" />
-          </motion.div>
-
-          <AnimatePresence>
-            {scrolled && isScrollingUp && (
-              <motion.div
-                className="fixed bg-white top-0 left-0 right-0 z-[500] shadow"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={navbarVariants}
-              >
-                <Navbar />
-              </motion.div>
-            )}
-          </AnimatePresence>
-
+          <MessageBar />
+          <NavbarWrapper
+            scrolled={scrolled}
+            isScrollingUp={isScrollingUp}
+            navbarVariants={navbarVariants}
+          />
           <div className="z-[-1000]">
             <section className="relative h-screen">
               <div
@@ -46,7 +28,6 @@ const HomePage = () => {
                 style={{ backgroundImage: `url(${img_one})` }}
               ></div>
               <div className="absolute top-0 left-0 right-0 bottom-0 z-1 bg-black bg-opacity-50"></div>
-
               <div className="absolute top-0 left-0 right-0 z-[100] text-white">
                 <Navbar />
               </div>
@@ -59,16 +40,15 @@ const HomePage = () => {
               >
                 <div className="max-w-4xl mx-auto text-center py-16">
                   <motion.h1
-                    className="text-3xl md:text-5xl font-thin tracking-[.5rem] uppercase mb-4 text-white transition-transform duration-300 ease-in-out"
+                    className="text-3xl md:text-5xl font-thin tracking-[.5rem] uppercase mb-4"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                   >
                     Companion Care Starts Here
                   </motion.h1>
-
                   <motion.p
-                    className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-6"
+                    className="text-lg md:text-xl max-w-2xl mx-auto mb-6"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
@@ -76,7 +56,6 @@ const HomePage = () => {
                     Discover premium pet supplies and expert care to keep your
                     furry friends happy and healthy.
                   </motion.p>
-
                   <ShopNowViewAllButton name="Shop Now" />
                 </div>
               </motion.div>
@@ -90,7 +69,7 @@ const HomePage = () => {
                 {[1, 2, 3, 4].map((item) => (
                   <div
                     key={item}
-                    className="aspect-square bg-sky-400 shadow-sm"
+                    className="aspect-square bg-gray-100 shadow-sm"
                   />
                 ))}
               </div>
@@ -126,7 +105,7 @@ const HomePage = () => {
                     {[1, 2, 3, 4].map((item) => (
                       <div
                         key={item}
-                        className="aspect-square bg-sky-400 shadow-sm"
+                        className="aspect-square bg-gray-100 shadow-sm"
                       />
                     ))}
                   </div>
@@ -143,7 +122,7 @@ const HomePage = () => {
             {/* Sale Section */}
             <section className="">
               <div className="lg:flex lg:px-4 gap-8 items-center">
-                <div className="px-0 lg:flex-1 bg-sky-500 mb-8 lg:mb-0">
+                <div className="px-0 lg:flex-1 bg-gray-100 mb-8 lg:mb-0">
                   <img src={img_four} alt="" />
                 </div>
                 <div className="lg:flex-1 py-12 px-4 lg:px-4 max-w-7xl mx-auto">
@@ -210,7 +189,7 @@ const HomePage = () => {
                     {[1, 2, 3, 4].map((item) => (
                       <div
                         key={item}
-                        className="aspect-square bg-sky-400 shadow-sm"
+                        className="aspect-square bg-gray-100 shadow-sm"
                       />
                     ))}
                   </div>
@@ -236,7 +215,7 @@ const HomePage = () => {
               <h1 className="text-3xl font-medium text-center mb-8">
                 Home Made Products
               </h1>
-              <div className="aspect-[4/3] bg-sky-500"></div>
+              <div className="aspect-[4/3] bg-gray-100"></div>
             </section>
             <section className="categories py-16">
               <div>
@@ -244,7 +223,7 @@ const HomePage = () => {
                   {[1, 2, 3, 4].map((item) => (
                     <div
                       key={item}
-                      className="aspect-square bg-sky-400 shadow-sm"
+                      className="aspect-square bg-gray-100 shadow-sm"
                     />
                   ))}
                 </div>
@@ -271,17 +250,10 @@ const HomePage = () => {
                 </div>
               </div>
             </section>
-            <section className="footer relative top-[15rem] lg:top-0">
-              <h2 className="text-center text-[1.5rem] p-8">
-                Follow us on Instagram
-              </h2>
-              <div className="lg:hidden">
-                <MobileFooter />
-              </div>
-              <div className="hidden lg:block">
-                <DesktopFooter />
-              </div>
-            </section>
+            <Footer
+              top={`top-[35vh]`}
+              instagram_cta={`Follow us on instagram`}
+            />
           </div>
         </>
       )}
