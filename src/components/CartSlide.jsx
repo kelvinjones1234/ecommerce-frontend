@@ -118,7 +118,7 @@ const CartSlide = () => {
               variants={slideVariants}
               initial="hidden"
               animate="visible"
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-lg p-4 flex flex-col z-50 "
+              className="fixed right-0 top-0 h-full w-80 [@media(min-width:700px)]:w-[150%] bg-white shadow-lg p-4 flex flex-col z-50 "
             >
               <motion.div
                 variants={contentVariants}
@@ -244,7 +244,7 @@ const CartSlide = () => {
                   },
                   opacity: 0,
                 }}
-                className="fixed right-80 top-0 h-full w-80 bg-gray-100 py-4 pl-4 pr-1 z-40 border-r-[1px] border-black"
+                className="fixed right-80 lg:right-[150%] top-0 h-full w-80 bg-gray-100 py-4 pl-4 pr-1 z-40 border-r-[1px] border-black hidden [@media(min-width:850px)]:block"
               >
                 <motion.div
                   variants={contentVariants}
