@@ -3,6 +3,7 @@ import { useCart } from "./context/CartContext";
 import CartSlide from "./components/CartSlide";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 
 function AppContent() {
   const { isCartOpen, closeCart } = useCart();
@@ -40,8 +41,9 @@ function AppContent() {
       </div>
 
       {/* Main content */}
-      <ProductDetailPage />
+      {/* <ProductDetailPage /> */}
       {/* <HomePage /> */}
+      <LoginPage />
     </>
   );
 }
