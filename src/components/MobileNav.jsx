@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
-import { RiMenu2Line, RiSearchLine, RiShoppingCart2Line } from "react-icons/ri";
+import {
+  RiMenu2Line,
+  RiSearchLine,
+  RiCloseLargeLine,
+  RiShoppingCart2Line,
+} from "react-icons/ri";
 import { VscAccount } from "react-icons/vsc";
 import MobileMenu from "./MobileMenu";
 import { useCart } from "../context/CartContext";
+import { useState, useEffect } from "react";
 
-const MobileNav = () => {
-  const [menuToggle, setMenuToggle] = useState(false);
+const MobileNav = ({ menuToggle, onMenuToggle }) => {
   const { toggleCart } = useCart();
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const handleMenuToggle = () => {
-    setMenuToggle((prev) => !prev); // Toggle the state
-  };
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (menuToggle) {
@@ -27,8 +34,12 @@ const MobileNav = () => {
     <>
       <div className="max-w-7xl mx-auto px-4 xl:px-16 2xl:px-8 lg:px-8">
         <div className="navs-and-logo flex justify-between items-center py-3">
-          <div className="left flex-1" onClick={handleMenuToggle}>
-            <RiMenu2Line size={20} />
+          <div className="left flex-1" onClick={onMenuToggle}>
+            {menuToggle ? (
+              <RiCloseLargeLine size={20} color="gray" />
+            ) : (
+              <RiMenu2Line size={20} />
+            )}
           </div>
           <div className="middle flex-[2] flex justify-center">
             Madu<br></br>Pet<br></br>Exclusive
@@ -52,7 +63,7 @@ const MobileNav = () => {
           </div>
         </div>
       </div>
-      <MobileMenu isOpen={menuToggle} onClose={handleMenuToggle} />
+      <MobileMenu isOpen={menuToggle} onClose={onMenuToggle} />
     </>
   );
 };

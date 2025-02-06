@@ -4,9 +4,9 @@ import MessageBar from "../components/MessageBar";
 import Navbar from "../components/Navbar";
 import NavbarWrapper from "../components/NavbarWrapper";
 import Footer from "../components/Footer";
-import Login from "../components/Login";
+import Register from "../components/Register";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <ScrollHandler>
       {({ scrolled, isScrollingUp, navbarVariants }) => (
@@ -22,7 +22,7 @@ const LoginPage = () => {
             <section className="relative">
               <div className="hero bg-cover top-0 z-[-2] bg-center absolute h-full w-full"></div>
             </section>
-            <Login />
+            <Register />
             <Footer top={`top-[vh]`} />
           </div>
         </>
@@ -31,4 +31,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

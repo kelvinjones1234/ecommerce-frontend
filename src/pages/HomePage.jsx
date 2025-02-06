@@ -9,6 +9,7 @@ import ScrollHandler from "../utils/ScrollHandler";
 import MessageBar from "../components/MessageBar";
 import NavbarWrapper from "../components/NavbarWrapper";
 import Footer from "../components/Footer";
+import MainButtons from "../components/MainButtons";
 
 const HomePage = () => {
   return (
@@ -56,7 +57,9 @@ const HomePage = () => {
                     Discover premium pet supplies and expert care to keep your
                     furry friends happy and healthy.
                   </motion.p>
-                  <ShopNowViewAllButton name="Shop Now" />
+                  <MainButtons containerClassName="w-[10rem]">
+                    shop now
+                  </MainButtons>
                 </div>
               </motion.div>
             </section>
@@ -74,10 +77,9 @@ const HomePage = () => {
                 ))}
               </div>
               <div className="mt-12 flex justify-center">
-                <ShopNowViewAllButton
-                  name="View All"
-                  width="md:w-[12rem] w-full py-3"
-                />
+                <div className="md:w-[12rem] w-full py-3">
+                  <MainButtons>view all</MainButtons>
+                </div>
               </div>
             </section>
 
@@ -93,10 +95,10 @@ const HomePage = () => {
                   <h2 className="text-white text-2xl md:text-4xl mb-8 text-center">
                     Amazing Pets, Amazing Meals
                   </h2>
-                  <ShopNowViewAllButton
-                    name="Shop Now"
-                    className="md:w-48 w-full py-3"
-                  />
+                  <div className="w-48">
+                    {" "}
+                    <MainButtons>shop now</MainButtons>
+                  </div>
                 </div>
               </div>
               <div className="px-4 lg:px-4 max-w-7xl mx-auto">
@@ -111,10 +113,9 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <ShopNowViewAllButton
-                    name="View All"
-                    width="md:w-[12rem] w-full py-3"
-                  />
+                  <div className="md:w-[12rem] w-full py-3">
+                    <MainButtons>view all</MainButtons>
+                  </div>
                 </div>
               </div>
             </section>
@@ -129,10 +130,9 @@ const HomePage = () => {
                   <div className="lg:w-1/2 text-center lg:text-left">
                     <h2 className="text-3xl font-medium mb-4">Lucky Last</h2>
                     <p className="text-xl mb-8">Up to 50% Off Selected Items</p>
-                    <ShopNowViewAllButton
-                      name="Shop Now"
-                      className="md:w-48 w-full py-3"
-                    />
+                    <MainButtons className="md:w-48 w-full py-3">
+                      shop now
+                    </MainButtons>
                   </div>
                 </div>
               </div>
@@ -177,10 +177,9 @@ const HomePage = () => {
                   <h2 className="text-white text-2xl md:text-4xl mb-8 text-center">
                     Sustainable Pet Accessories
                   </h2>
-                  <ShopNowViewAllButton
-                    name="Shop Now"
-                    className="md:w-48 w-full py-3"
-                  />
+                  <div className="w-48">
+                    <MainButtons>shop now</MainButtons>
+                  </div>
                 </div>
               </div>
               <div className="px-4 lg:px-4 max-w-7xl mx-auto">
@@ -195,10 +194,9 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <ShopNowViewAllButton
-                    name="View All"
-                    width="md:w-[12rem] w-full py-3"
-                  />
+                  <div className="w-48">
+                    <MainButtons>view all</MainButtons>
+                  </div>
                 </div>
               </div>
             </section>
@@ -243,10 +241,7 @@ const HomePage = () => {
                   Join our mail list to recieve specials new arrivals and more.
                 </p>
                 <div className="pt-4">
-                  <ShopNowViewAllButton
-                    name="Sign up"
-                    width="md:w-[12rem] w-full py-3"
-                  />
+                  <MainButtons containerClassName="w-48 ">sign up</MainButtons>{" "}
                 </div>
               </div>
             </section>

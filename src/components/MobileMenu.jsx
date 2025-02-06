@@ -2,22 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { RiCloseLargeLine } from "react-icons/ri";
 
 const MobileMenu = ({ isOpen, onClose }) => {
-  const menuRef = useRef(null); // Ref for the side menu
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      // Check if the click is outside the menu
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         onClose();
       }
     };
 
-    // Attach event listener when the menu is open
     if (isOpen) {
       document.addEventListener("mousedown", handleOutsideClick);
     }
 
-    // Cleanup the event listener
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
@@ -37,29 +34,40 @@ const MobileMenu = ({ isOpen, onClose }) => {
   return (
     <div
       ref={menuRef}
-      className={`uppercase list-none bg-white z-[300] top-0 h-screen absolute w-[80%] transform ${
+      className={`fixed uppercase list-none bg-white z-[300] top-0 lg:top-auto w-[85%] lg:w-[50%] h-screen lg:h-[calc(100vh-100px)] transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } transition-transform duration-300`}
+      } transition-transform duration-300 border-t border-black flex flex-col`}
     >
-      <div>
-        <div className="border-b-[.05rem] border-gray-500">
-          <div
-            className="ml-5 my-4 rounded-full bg-gray-200 p-2 inline-block"
-            onClick={onClose}
-          >
-            <RiCloseLargeLine size={20} color="gray" />
-          </div>
+      {/* Header Section */}
+      <div className="border-b-[.05rem] border-gray-500 lg:hidden min-h-[60px] flex items-center">
+        <div
+          className="ml-5 rounded-full bg-gray-200 p-2 inline-block"
+          onClick={onClose}
+        >
+          <RiCloseLargeLine size={20} color="gray" />
         </div>
-        <div className="ml-5">
-          {categories.map((items) => (
+      </div>
+
+      {/* Main Content Container */}
+      <div className="flex-1 overflow-y-auto custom-scrollbar pb-[2rem]">
+        <ul className="pl-5">
+          {categories.map((items, index) => (
             <li
               key={items.id}
-              className="py-5 border-b-[.05rem] text-black border-gray-500"
+              className={`py-5 ${
+                index === 0 ? "border-none" : "border-t border-gray-500"
+              } text-black`}
             >
               {items.name}
             </li>
           ))}
-        </div>
+        </ul>
+      </div>
+
+      {/* Fixed Bottom Section */}
+      <div className="sticky bottom-0 border-t border-black text-black bg-white py-4 px-5 flex justify-between items-center">
+        <span>Lorem ipsum.</span>
+        <span>Lorem ipsum.</span>
       </div>
     </div>
   );

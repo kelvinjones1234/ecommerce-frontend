@@ -4,6 +4,8 @@ import CartSlide from "./components/CartSlide";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import NavbarWrapper from "./components/NavbarWrapper";
 
 function AppContent() {
   const { isCartOpen, closeCart } = useCart();
@@ -16,7 +18,7 @@ function AppContent() {
       document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = "auto"; // Cleanup when unmounting
+      document.body.style.overflow = "auto";
     };
   }, [isCartOpen]);
 
@@ -43,7 +45,8 @@ function AppContent() {
       {/* Main content */}
       {/* <ProductDetailPage /> */}
       {/* <HomePage /> */}
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <RegisterPage />
     </>
   );
 }
