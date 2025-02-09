@@ -44,9 +44,9 @@ function AppContent() {
 
       {/* Main content */}
       {/* <ProductDetailPage /> */}
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <LoginPage /> */}
-      <RegisterPage />
+      {/* <RegisterPage /> */}
     </>
   );
 }
