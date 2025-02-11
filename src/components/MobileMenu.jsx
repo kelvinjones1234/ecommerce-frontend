@@ -34,7 +34,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
   return (
     <div
       ref={menuRef}
-      className={`fixed uppercase list-none bg-white z-[300] top-0 lg:top-auto w-[85%] lg:w-[50%] h-screen lg:h-[calc(100vh-100px)] transform ${
+      className={`fixed uppercase list-none bg-white z-[300] top-0 left-0 lg:top-auto w-[85%] lg:w-[50%] h-screen lg:h-[calc(100vh-100px)] transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } transition-transform duration-300 border-t border-black flex flex-col`}
     >

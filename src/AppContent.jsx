@@ -6,9 +6,12 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NavbarWrapper from "./components/NavbarWrapper";
+import MessageBar from "./components/MessageBar";
+import { useMenu } from "./context/MenuContext";
 
 function AppContent() {
   const { isCartOpen, closeCart } = useCart();
+  const { menuToggle, handleMenuToggle } = useMenu();
 
   // Prevent scrolling when cart is open
   useEffect(() => {

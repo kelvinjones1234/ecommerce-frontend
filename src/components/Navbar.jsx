@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
 import NavbarWrapper from "./NavbarWrapper";
+import { useMenu } from "../context/MenuContext";
 
 const Navbar = () => {
-  const [menuToggle, setMenuToggle] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuToggle((prev) => !prev);
-  };
-
+  // const { menuToggle, handleMenuToggle } = useMenu();
   return (
     <>
-      <NavbarWrapper menuToggle={menuToggle} />
       <div className="xl:hidden">
-        <MobileNav menuToggle={menuToggle} onMenuToggle={handleMenuToggle} />
+        <MobileNav  />
       </div>
       <div className="hidden xl:block">
         <DesktopNav />
@@ -22,5 +17,4 @@ const Navbar = () => {
     </>
   );
 };
-
 export default Navbar;

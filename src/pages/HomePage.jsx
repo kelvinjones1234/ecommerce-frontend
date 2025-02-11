@@ -11,18 +11,18 @@ import NavbarWrapper from "../components/NavbarWrapper";
 import Footer from "../components/Footer";
 import MainButtons from "../components/MainButtons";
 
-const HomePage = ({ menuToggle, handleMenuToggle }) => {
+const HomePage = () => {
+
   return (
     <ScrollHandler>
       {({ scrolled, isScrollingUp, navbarVariants, heroContentVariants }) => (
         <>
           <MessageBar />
+
           <NavbarWrapper
             scrolled={scrolled}
             isScrollingUp={isScrollingUp}
             navbarVariants={navbarVariants}
-            menuToggle={menuToggle}
-            onMenuToggle={handleMenuToggle}
           />
           <div className="z-[-1000]">
             <section className="relative h-screen">
