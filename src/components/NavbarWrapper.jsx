@@ -2,7 +2,6 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import ScrollNavbar from "./ScrollNavbar";
 
 const NavbarWrapper = ({
   scrolled,
