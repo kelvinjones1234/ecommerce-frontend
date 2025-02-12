@@ -28,7 +28,7 @@ const ProductDetail = () => {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 xl:px-16 2xl:px-8 lg:px-8 py-8">
+    <section className="max-w-7xl mx-auto px-4 xl:px-16 2xl:px-8 lg:px-8 py-8 relative z-[-1]">
       <div className="grid lg:grid-cols-2 lg:gap-x-[5rem]">
         {/* Left Column - Images */}
         <div className="lg:relative">

@@ -10,12 +10,14 @@ import MobileMenu from "./MobileMenu";
 import { useCart } from "../context/CartContext";
 import { useState, useEffect } from "react";
 import { useMenu } from "../context/MenuContext";
+import Icon from "./Icon";
 
 const MobileNav = () => {
   const { toggleCart } = useCart();
   const [width, setWidth] = useState(window.innerWidth);
   const [isHovered, setIsHovered] = useState(false);
-  const { menuToggle, handleMenuToggle } = useMenu();
+  const { menuToggle, handleMenuToggle, searchToggle, handleSearchToggle } =
+    useMenu();
 
   const navVariants = {
     initial: { scaleY: 0 },
@@ -52,12 +54,27 @@ const MobileNav = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      <div
+        className={`absolute h-full z-[10000] w-full inset-0 bg-white text-black ${
+          !searchToggle && "hidden"
+        }`}
+      >
+        {/* Search bar */}
+        <div className="relative w-full h-full flex items-center px-8">
+          <RiSearchLine size={20} className="absolute left-[3rem]" />
+          <input
+            type="text"
+            className="bg-gray-100 w-full h-[3rem] outline-0 rounded-xl px-[3rem]"
+            placeholder="Search"
+          />
+        </div>
+      </div>
       {/* Sliding white background */}
       <motion.div
         className="absolute inset-0 bg-white z-0"
         variants={navVariants}
         initial="initial"
-        animate={isHovered ? "hover" : "initial"}
+        animate={menuToggle || isHovered ? "hover" : "initial"}
         style={{
           transformOrigin: "top",
           height: "100%",
@@ -68,37 +85,44 @@ const MobileNav = () => {
       {/* Navigation content */}
       <div
         className={`
-        relative z-10 
+        relative z-[100] 
         ${isHovered && "text-black"}
       `}
       >
-        <div className="max-w-7xl mx-auto px-4 xl:px-16 2xl:px-8 lg:px-8">
+        <div
+          className={`max-w-7xl mx-auto px-4 xl:px-16 2xl:px-8 lg:px-8 ${
+            menuToggle && "text-black"
+          }`}
+        >
           <div className="navs-and-logo flex justify-between items-center py-3">
             <div className="left flex-1" onClick={handleMenuToggle}>
               {menuToggle ? (
-                <RiCloseLargeLine size={20} color="gray" />
+                <Icon
+                  icon={RiCloseLargeLine}
+                  className="bg-gray-100 hover:bg-gray-200 rounded-full"
+                />
               ) : (
-                <RiMenu2Line size={20} />
+                <Icon icon={RiMenu2Line} className="" />
               )}
             </div>
+
             <div className="middle flex-[2] flex justify-center">
               Madu<br></br>Pet<br></br>Exclusive
             </div>
             <div className="right flex items-center justify-between gap-7 flex-1">
-              <div className="p-2 cursor-pointer">
-                <RiSearchLine size={20} />
+              <div className="cursor-pointer" onClick={handleSearchToggle}>
+                <Icon className="" icon={RiSearchLine} />
               </div>
-              <div className="hidden lg:block p-2 cursor-pointer">
-                <VscAccount size={20} />{" "}
-                {/* Corrected prop from scale to size */}
+              <div className="hidden lg:block cursor-pointer">
+                <Icon icon={VscAccount} className="" />
               </div>
               <div
-                className="cursor-pointer p-2"
+                className="cursor-pointer"
                 onClick={() => {
                   toggleCart();
                 }}
               >
-                <RiShoppingCart2Line size={20} /> {/* Moved size prop here */}
+                <Icon icon={RiShoppingCart2Line} className="" />
               </div>
             </div>
           </div>

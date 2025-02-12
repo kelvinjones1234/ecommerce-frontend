@@ -10,16 +10,18 @@ const MainButtons = ({
   hoverClassName = "hover:bg-gray-950",
   onClick,
   type = "button",
+  width, // New prop for dynamic width
 }) => {
   return (
     <button
       type={type}
       onClick={onClick}
+      style={{ width: width }} // Apply the width dynamically
       className={`
         ${containerClassName}
         ${bgClassName}
         ${hoverClassName}
-        outline-0 w-full h-[3rem]
+        outline-0 h-[3rem]
         transition-all duration-500 ease-in-out
         group relative overflow-hidden
         uppercase text-[.8rem] tracking-[.2rem]
@@ -55,6 +57,7 @@ MainButtons.propTypes = {
   hoverClassName: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(["button", "submit", "reset", "sign in"]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // Add width prop type
 };
 
 export default MainButtons;

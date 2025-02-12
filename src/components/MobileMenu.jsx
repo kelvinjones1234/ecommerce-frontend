@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { RiCloseLargeLine } from "react-icons/ri";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MobileMenu = ({ isOpen, onClose }) => {
   const menuRef = useRef(null);
@@ -32,44 +33,53 @@ const MobileMenu = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <div
-      ref={menuRef}
-      className={`fixed uppercase list-none bg-white z-[300] top-0 left-0 lg:top-auto w-[85%] lg:w-[50%] h-screen lg:h-[calc(100vh-100px)] transform ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      } transition-transform duration-300 border-t border-black flex flex-col`}
-    >
-      {/* Header Section */}
-      <div className="border-b-[.05rem] border-gray-500 lg:hidden min-h-[60px] flex items-center">
-        <div
-          className="ml-5 rounded-full bg-gray-200 p-2 inline-block"
-          onClick={onClose}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          ref={menuRef}
+          initial={{ x: "-100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "-100%" }}
+          transition={{ type: "tween", duration: 0.3 }}
+          className="fixed uppercase list-none bg-white z-[300] top-0 left-0 lg:top-auto w-[85%] lg:w-[50%] h-screen lg:h-[calc(100vh-100px)] border-t border-black flex flex-col"
         >
-          <RiCloseLargeLine size={20} color="gray" />
-        </div>
-      </div>
-
-      {/* Main Content Container */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar pb-[2rem]">
-        <ul className="pl-5">
-          {categories.map((items, index) => (
-            <li
-              key={items.id}
-              className={`py-5 ${
-                index === 0 ? "border-none" : "border-t border-gray-500"
-              } text-black`}
+          {/* Header Section */}
+          <div className="border-b-[.05rem] border-gray-500 lg:hidden min-h-[60px] flex items-center">
+            <div
+              className="ml-5 rounded-full bg-gray-200 p-2 inline-block cursor-pointer"
+              onClick={onClose}
             >
-              {items.name}
-            </li>
-          ))}
-        </ul>
-      </div>
+              <RiCloseLargeLine size={20} color="gray" />
+            </div>
+          </div>
 
-      {/* Fixed Bottom Section */}
-      <div className="sticky bottom-0 border-t border-black text-black bg-white py-4 px-5 flex justify-between items-center">
-        <span>Lorem ipsum.</span>
-        <span>Lorem ipsum.</span>
-      </div>
-    </div>
+          {/* Main Content Container */}
+          <div className="flex-1 overflow-y-auto custom-scrollbar pb-[2rem]">
+            <ul className="pl-5">
+              {categories.map((items, index) => (
+                <motion.li
+                  key={items.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`py-5 ${
+                    index === 0 ? "border-none" : "border-t border-gray-500"
+                  } text-black`}
+                >
+                  {items.name}
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Fixed Bottom Section */}
+          <div className="sticky bottom-0 border-t border-black text-black bg-white py-4 px-5 flex justify-between items-center">
+            <span>Lorem ipsum.</span>
+            <span>Lorem ipsum.</span>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

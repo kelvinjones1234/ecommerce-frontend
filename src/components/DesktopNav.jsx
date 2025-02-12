@@ -3,9 +3,12 @@ import { RiSearchLine, RiShoppingCart2Line } from "react-icons/ri";
 import { VscAccount } from "react-icons/vsc";
 import { motion } from "framer-motion";
 import DesktopMenu from "./DesktopMenu";
+import Icon from "./Icon";
+import { useMenu } from "../context/MenuContext";
 
 const DesktopNav = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const { searchToggle, handleSearchToggle } = useMenu();
 
   const navVariants = {
     initial: { scaleY: 0 },
@@ -24,6 +27,20 @@ const DesktopNav = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <div
+        className={`absolute h-full z-[10000] w-full inset-0 bg-white text-black ${
+          !searchToggle && "hidden"
+        }`}
+      >
+        <div className="relative w-full h-full flex items-center px-8">
+          <RiSearchLine size={20} className="absolute left-[3rem]" />
+          <input
+            type="text"
+            className="bg-gray-100 w-full h-[3rem] outline-0 rounded-xl px-[3rem]"
+            placeholder="Search"
+          />
+        </div>
+      </div>
       {/* Sliding white background */}
       <motion.div
         className="absolute inset-0 bg-white z-0"
@@ -56,19 +73,23 @@ const DesktopNav = () => {
           </div>
 
           <div className="right flex items-center gap-x-5">
-            <button aria-label="Search" className="hover:text-black">
-              <RiSearchLine size={20} />
-            </button>
+            <div
+              aria-label="Search"
+              className="hover:text-black cursor-pointer"
+              onClick={handleSearchToggle}
+            >
+              <Icon icon={RiSearchLine} />
+            </div>
 
             <button
               aria-label="Account"
               className="hidden lg:block hover:text-black"
             >
-              <VscAccount size={20} />
+              <Icon icon={VscAccount} />
             </button>
 
             <button aria-label="Shopping Cart" className="hover:text-black">
-              <RiShoppingCart2Line size={20} />
+              <Icon icon={RiShoppingCart2Line} />
             </button>
           </div>
         </div>

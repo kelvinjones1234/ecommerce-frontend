@@ -5,11 +5,11 @@ const Login = () => {
   return (
     <div className="max-w-[600px] mx-auto px-4 xl:px-16 2xl:px-8 lg:px-8">
       <div className="text-[1.2rem] py-8">
-        <h3 className="py-4">Login</h3>
+        <h3 className="py-4 text-[1.4em]">Login</h3>
         <p className="text-gray-600">
-          Don't have an account yet? <br />
+          Don't have an account yet?{" "}
+          <span className="block lg:inline text-black">Create account</span>
         </p>
-        <p className="">Create account</p>
       </div>
       <div className="border border-black my-[1.2rem]">
         <input
@@ -27,17 +27,18 @@ const Login = () => {
       </div>{" "}
       <p className="text-gray-700 text-[.85rem] my-3">Forgot your password?</p>
       <div className="md:flex gap-8">
-        {/* <button className="bg-black flex-1 md:max-w-[180px] text-white outline-0 w-full h-[3rem] uppercase text-[.8rem] tracking-[.2rem] font-semibold mt-8">
-          Sign in
-        </button> */}
-
-        <MainButtons containerClassName="relative overflow-hidden flex-1 md:max-w-[180px] mt-8 w-full" textClassName="font-semibold">
+        <MainButtons
+          containerClassName="relative overflow-hidden flex-1 md:max-w-[180px] mt-8 w-full"
+          textClassName="font-semibold"
+        >
           sign in
         </MainButtons>
 
-        <p className="my-8 border-b-[0.05px] md:inline-flex-1 border-black inline-flex py-1 text-[.9rem] text-gray-700 cursor-pointer">
-          <button className="">Return to store</button>
-        </p>
+        <div className="mt-8 mb-3 border-b border-black/90 py-1 text-sm text-gray-700 md:inline-flex">
+          <button className="hover:text-black transition-colors duration-200">
+            Return to store
+          </button>
+        </div>
       </div>
     </div>
   );

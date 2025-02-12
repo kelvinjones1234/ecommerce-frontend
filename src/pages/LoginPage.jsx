@@ -18,9 +18,9 @@ const LoginPage = () => {
             navbarVariants={navbarVariants}
           />
           <Navbar />
-          <div className="z-[-1000]">
+          <div className="z-[1000]">
             <section className="relative">
-              <div className="hero bg-cover top-0 z-[-2] bg-center absolute h-full w-full"></div>
+              <div className="hero bg-cover top-0 z-[2] bg-center absolute h-full w-full"></div>
             </section>
             <Login />
             <Footer top={`top-[vh]`} />
