@@ -74,7 +74,7 @@ const MobileNav = () => {
         className="absolute inset-0 bg-white z-0"
         variants={navVariants}
         initial="initial"
-        animate={isHovered ? "hover" : "initial"}
+        animate={(menuToggle && width > 750) || isHovered ? "hover" : "initial"}
         style={{
           transformOrigin: "top",
           height: "100%",
