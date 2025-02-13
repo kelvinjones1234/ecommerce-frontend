@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NavbarWrapper from "./components/NavbarWrapper";
 import MessageBar from "./components/MessageBar";
+import CollectionsPage from "./pages/CollectionsPage";
 import { useMenu } from "./context/MenuContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -82,9 +83,10 @@ function AppContent() {
         {/* Routes */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/product/:id" element={<ProductDetailPage />} />
+          <Route path="/product/" element={<ProductDetailPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/collections" element={<CollectionsPage />} />
         </Routes>
       </>
     </Router>

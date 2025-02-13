@@ -9,6 +9,7 @@ import Collections from "../components/Collections";
 import MobileFooter from "../components/MobileFooter";
 import DesktopFooter from "../components/DesktopFooter";
 import FooterMenu from "../components/FooterMenu";
+import Footer from "../components/Footer";
 
 const CollectionsPage = () => {
   return (
@@ -89,12 +90,7 @@ const CollectionsPage = () => {
           </div>
           <Collections />
           <section className="footer relative top-[5rem] lg:top-0">
-            <div className="lg:hidden">
-              <MobileFooter />
-            </div>
-            <div className="hidden lg:block">
-              <DesktopFooter />
-            </div>
+            <Footer />
           </section>
         </>
       )}

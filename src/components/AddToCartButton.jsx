@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
-const AddToCartButton = ({ label, isFloating, onClick, className }) => {
+const AddToCartButton = ({
+  label,
+  isFloating,
+  onClick,
+  className,
+  containerClassName,
+  animationClassName = "hover:before:translate-x-full hover:before:opacity-100",
+  textClassName,
+  bgClassName = "bg-black text-white",
+  hoverClassName = "hover:bg-gray-950",
+  type = "button",
+  width,
+}) => {
   if (isFloating) {
     return (
       <motion.button
@@ -28,10 +40,36 @@ const AddToCartButton = ({ label, isFloating, onClick, className }) => {
 
   return (
     <button
-      className={`w-full tracking-[.2rem] border border-black text-black text-[.9rem] py-4 rounded-lg hover:bg-black hover:text-white transition-colors ${className}`}
+      type={type}
       onClick={onClick}
+      style={{ width: width }}
+      className={`
+        ${containerClassName}
+        ${bgClassName}
+        ${hoverClassName}
+        outline-0 h-[3rem]
+        transition-all duration-500 ease-in-out
+        group relative overflow-hidden
+        uppercase text-[.8rem] tracking-[.2rem]
+        before:content-[''] 
+        before:absolute 
+        before:top-0 
+        before:left-0 
+        before:w-full 
+        before:h-full 
+        before:bg-gradient-to-r 
+        before:from-transparent 
+        before:via-white/50  // Increased opacity for more visibility
+        before:to-transparent 
+        before:opacity-100   // Set initial opacity to 100%
+        before:transition-all 
+        before:duration-700 
+        before:-translate-x-full
+        ${animationClassName}
+        ${className}
+      `}
     >
-      {label}
+      <span className={textClassName}>{label}</span>
     </button>
   );
 };
@@ -41,6 +79,13 @@ AddToCartButton.propTypes = {
   isFloating: PropTypes.bool,
   onClick: PropTypes.func,
   className: PropTypes.string,
+  containerClassName: PropTypes.string,
+  animationClassName: PropTypes.string,
+  textClassName: PropTypes.string,
+  bgClassName: PropTypes.string,
+  hoverClassName: PropTypes.string,
+  type: PropTypes.oneOf(["button", "submit", "reset"]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 AddToCartButton.defaultProps = {
@@ -48,6 +93,13 @@ AddToCartButton.defaultProps = {
   isFloating: false,
   onClick: () => {},
   className: "",
+  containerClassName: "",
+  animationClassName: "hover:before:translate-x-full hover:before:opacity-100",
+  textClassName: "",
+  bgClassName: "bg-black text-white",
+  hoverClassName: "hover:bg-gray-950",
+  type: "button",
+  width: undefined,
 };
 
 export default AddToCartButton;

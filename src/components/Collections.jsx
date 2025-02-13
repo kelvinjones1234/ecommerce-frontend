@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { RiFilter3Line, RiShoppingCart2Line } from "react-icons/ri";
 import { ChevronDown, Search, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
+import AddToCartButton from "./AddToCartButton";
+import { useCart } from "../context/CartContext";
+import { useFilter } from "../context/FilterContext";
+import FilterSlide from "./FilterSlide";
 
 const PRODUCT_TYPES = [
   { name: "Cat Harness", count: 2 },
@@ -31,11 +35,13 @@ const COLORS = [
 
 const Collections = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const { toggleCart } = useCart();
   const [expandedSections, setExpandedSections] = useState({
     productType: true,
     brand: true,
     color: true,
   });
+  const { toggleFilter, isFilterOpen } = useFilter();
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -139,13 +145,13 @@ const Collections = () => {
           isSticky ? "shadow-md" : ""
         }`}
       >
-        <div className="px-4 py-4">
-          <button className="flex w-full items-center gap-[3rem] bg-black py-3 text-white hover:bg-gray-900">
+        <div className="px-4 py-4" onClick={toggleFilter}>
+          <div className="flex w-full justify-center items-center gap-[3rem] bg-black py-3 text-white hover:bg-gray-900 shadow-md shadow-gray-500">
             <RiFilter3Line size={20} />
             <span className="text-sm font-medium tracking-wider">
               FILTER AND SORT
             </span>
-          </button>
+          </div>
         </div>
       </div>
 
@@ -206,6 +212,9 @@ const Collections = () => {
                   </motion.button>
                   <motion.button
                     className="absolute lg:hidden bottom-4 right-4 rounded-full bg-black p-2"
+                    onClick={() => {
+                      toggleCart();
+                    }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <svg
@@ -223,10 +232,18 @@ const Collections = () => {
                     </svg>
                   </motion.button>
                   <motion.button
-                    className="hidden text-[.8rem] lg:block absolute bottom-4 left-0 right-0 bg-black py-3 text-white"
+                    className="hidden text-[.8rem] lg:block absolute bottom-0 left-0 right-0 text-white"
                     variants={cartButtonVariants}
                   >
-                    ADD TO CART
+                    <AddToCartButton
+                      label="ADD TO CART"
+                      isFloating={false}
+                      onClick={() => {
+                        toggleCart();
+                      }}
+                      className="w-full"
+                      type="button"
+                    />
                   </motion.button>
                 </div>
                 <motion.div className="text-center pt-4">
@@ -242,6 +259,9 @@ const Collections = () => {
             ))}
           </motion.div>
         </div>
+      </div>
+      <div className={`hidden ${isFilterOpen && "block"}`}>
+        <FilterSlide />
       </div>
     </section>
   );

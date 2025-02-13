@@ -5,14 +5,17 @@ import MessageBar from "./components/MessageBar";
 import { useState, useEffect } from "react";
 import NavbarWrapper from "./components/NavbarWrapper";
 import { MenuProvider } from "./context/MenuContext";
+import { FilterProvider } from "./context/FilterContext";
 function App() {
   return (
     <>
-      <CartProvider>
-        <MenuProvider>
-          <AppContent />
-        </MenuProvider>
-      </CartProvider>
+      <FilterProvider>
+        <CartProvider>
+          <MenuProvider>
+            <AppContent />
+          </MenuProvider>
+        </CartProvider>
+      </FilterProvider>
     </>
   );
 }

@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 import DesktopMenu from "./DesktopMenu";
 import Icon from "./Icon";
 import { useMenu } from "../context/MenuContext";
+import { useCart } from "../context/CartContext";
 
 const DesktopNav = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { searchToggle, handleSearchToggle } = useMenu();
+  const { toggleCart } = useCart();
 
   const navVariants = {
     initial: { scaleY: 0 },
@@ -88,9 +90,15 @@ const DesktopNav = () => {
               <Icon icon={VscAccount} />
             </button>
 
-            <button aria-label="Shopping Cart" className="hover:text-black">
+            <div
+              aria-label="Shopping Cart"
+              className="hover:text-black"
+              onClick={() => {
+                toggleCart();
+              }}
+            >
               <Icon icon={RiShoppingCart2Line} />
-            </button>
+            </div>
           </div>
         </div>
       </div>
