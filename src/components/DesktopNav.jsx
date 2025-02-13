@@ -62,10 +62,10 @@ const DesktopNav = () => {
       `}
       >
         <div className="flex gap-x-[2rem] justify-between items-center py-5">
-          <div className="left hover:text-black text-left font-bold uppercase tracking-wider">
-            <h1>Madu</h1>
+          <div className="left grid text-center hover:text-black text-left font-thin uppercase tracking-wider">
+            <h1>Exclusive</h1>
             <h2>Pet</h2>
-            <h3>Exclusive</h3>
+            <h3>Store</h3>
           </div>
 
           <div className="middle">

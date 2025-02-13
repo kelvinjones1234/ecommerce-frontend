@@ -74,7 +74,7 @@ const MobileNav = () => {
         className="absolute inset-0 bg-white z-0"
         variants={navVariants}
         initial="initial"
-        animate={menuToggle || isHovered ? "hover" : "initial"}
+        animate={isHovered ? "hover" : "initial"}
         style={{
           transformOrigin: "top",
           height: "100%",
@@ -106,8 +106,8 @@ const MobileNav = () => {
               )}
             </div>
 
-            <div className="middle flex-[2] flex justify-center">
-              Madu<br></br>Pet<br></br>Exclusive
+            <div className="middle flex-[2] flex text-center font-thin uppercase tracking-wider justify-center">
+              Exclusive<br></br>Pet<br></br>Store
             </div>
             <div className="right flex items-center justify-between gap-7 flex-1">
               <div className="cursor-pointer" onClick={handleSearchToggle}>
