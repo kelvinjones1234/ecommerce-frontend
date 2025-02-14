@@ -10,6 +10,7 @@ import MobileFooter from "../components/MobileFooter";
 import DesktopFooter from "../components/DesktopFooter";
 import FooterMenu from "../components/FooterMenu";
 import Footer from "../components/Footer";
+import MainButtons from "../components/MainButtons";
 
 const CollectionsPage = () => {
   return (
@@ -83,7 +84,7 @@ const CollectionsPage = () => {
                     furry friends happy and healthy.
                   </motion.p>
 
-                  <ShopNowViewAllButton name="Shop Now" />
+                  <MainButtons width="10rem">shop now</MainButtons>
                 </div>
               </motion.div>
             </section>

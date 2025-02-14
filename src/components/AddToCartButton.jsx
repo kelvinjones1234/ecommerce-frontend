@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const AddToCartButton = ({
-  label,
-  isFloating,
-  onClick,
-  className,
-  containerClassName,
+  label = "ADD TO CART",
+  isFloating = false,
+  onClick = () => {},
+  className = "",
+  containerClassName = "",
   animationClassName = "hover:before:translate-x-full hover:before:opacity-100",
-  textClassName,
+  textClassName = "",
   bgClassName = "bg-black text-white",
   hoverClassName = "hover:bg-gray-950",
   type = "button",
@@ -42,7 +42,7 @@ const AddToCartButton = ({
     <button
       type={type}
       onClick={onClick}
-      style={{ width: width }}
+      style={{ width }}
       className={`
         ${containerClassName}
         ${bgClassName}
@@ -59,9 +59,9 @@ const AddToCartButton = ({
         before:h-full 
         before:bg-gradient-to-r 
         before:from-transparent 
-        before:via-white/50  // Increased opacity for more visibility
+        before:via-white/50  
         before:to-transparent 
-        before:opacity-100   // Set initial opacity to 100%
+        before:opacity-100   
         before:transition-all 
         before:duration-700 
         before:-translate-x-full
@@ -72,34 +72,6 @@ const AddToCartButton = ({
       <span className={textClassName}>{label}</span>
     </button>
   );
-};
-
-AddToCartButton.propTypes = {
-  label: PropTypes.string,
-  isFloating: PropTypes.bool,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  containerClassName: PropTypes.string,
-  animationClassName: PropTypes.string,
-  textClassName: PropTypes.string,
-  bgClassName: PropTypes.string,
-  hoverClassName: PropTypes.string,
-  type: PropTypes.oneOf(["button", "submit", "reset"]),
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
-AddToCartButton.defaultProps = {
-  label: "ADD TO CART",
-  isFloating: false,
-  onClick: () => {},
-  className: "",
-  containerClassName: "",
-  animationClassName: "hover:before:translate-x-full hover:before:opacity-100",
-  textClassName: "",
-  bgClassName: "bg-black text-white",
-  hoverClassName: "hover:bg-gray-950",
-  type: "button",
-  width: undefined,
 };
 
 export default AddToCartButton;

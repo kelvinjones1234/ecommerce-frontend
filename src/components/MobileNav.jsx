@@ -94,6 +94,8 @@ const MobileNav = () => {
             menuToggle && "text-black"
           }`}
         >
+
+        
           <div className="navs-and-logo flex justify-between items-center py-3">
             <div className="left flex-1" onClick={handleMenuToggle}>
               {menuToggle ? (

@@ -83,12 +83,12 @@ const DesktopNav = () => {
               <Icon icon={RiSearchLine} />
             </div>
 
-            <button
+            <div
               aria-label="Account"
               className="hidden lg:block hover:text-black"
             >
               <Icon icon={VscAccount} />
-            </button>
+            </div>
 
             <div
               aria-label="Shopping Cart"

@@ -10,15 +10,17 @@ import MessageBar from "./components/MessageBar";
 import CollectionsPage from "./pages/CollectionsPage";
 import { useMenu } from "./context/MenuContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useFilter } from "./context/FilterContext";
 
 function AppContent() {
   const { isCartOpen, closeCart } = useCart();
   const { menuToggle, handleMenuToggle, searchToggle, handleSearchToggle } =
     useMenu();
+  const { isFilterOpen, handleFilterToggle } = useFilter();
 
   // Prevent scrolling when cart or menu is open
   useEffect(() => {
-    if (isCartOpen || menuToggle || searchToggle) {
+    if (isCartOpen || menuToggle || searchToggle || isFilterOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -26,7 +28,7 @@ function AppContent() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isCartOpen, menuToggle, searchToggle]);
+  }, [isCartOpen, menuToggle, searchToggle, isFilterOpen]);
 
   // Close cart when its overlay is clicked
   const handleCartOverlayClick = () => {
@@ -42,12 +44,16 @@ function AppContent() {
     if (searchToggle) handleSearchToggle(false);
   };
 
+  const handleFilterOverlayClick = () => {
+    if (isFilterOpen) handleFilterToggle(false);
+  };
+
   return (
     <Router>
       <>
         {/* Overlay for menu with fade animation */}
         <div
-          className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out ${
+          className={`fixed inset-0 bg-black/50 z-[1] transition-opacity duration-300 ease-in-out ${
             menuToggle ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
           onClick={handleMenuOverlayClick}
@@ -68,6 +74,14 @@ function AppContent() {
             isCartOpen ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
           onClick={handleCartOverlayClick}
+          aria-hidden="true"
+        />
+
+        <div
+          className={`fixed inset-0 bg-black/50 z-[600] transition-opacity duration-300 ease-in-out ${
+            isFilterOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={handleFilterOverlayClick}
           aria-hidden="true"
         />
 

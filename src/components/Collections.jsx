@@ -6,6 +6,7 @@ import AddToCartButton from "./AddToCartButton";
 import { useCart } from "../context/CartContext";
 import { useFilter } from "../context/FilterContext";
 import FilterSlide from "./FilterSlide";
+import MainButtons from "./MainButtons";
 
 const PRODUCT_TYPES = [
   { name: "Cat Harness", count: 2 },
@@ -41,7 +42,7 @@ const Collections = () => {
     brand: true,
     color: true,
   });
-  const { toggleFilter, isFilterOpen } = useFilter();
+  const { isFilterOpen, handleFilterToggle } = useFilter();
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -140,17 +141,22 @@ const Collections = () => {
   return (
     <section className="min-h-screen">
       {/* Mobile filter button */}
+      <FilterSlide isOpen={isFilterOpen} close={handleFilterToggle} />
       <div
         className={`sticky top-0 z-10 bg-white transition-shadow duration-300 lg:hidden ${
           isSticky ? "shadow-md" : ""
         }`}
       >
-        <div className="px-4 py-4" onClick={toggleFilter}>
-          <div className="flex w-full justify-center items-center gap-[3rem] bg-black py-3 text-white hover:bg-gray-900 shadow-md shadow-gray-500">
-            <RiFilter3Line size={20} />
-            <span className="text-sm font-medium tracking-wider">
-              FILTER AND SORT
-            </span>
+        <div
+          className="px-4 py-4 cursor-pointer"
+          onClick={() => handleFilterToggle()}
+        >
+          <div className="shadow-md shadow-gray-500">
+            <MainButtons bgClassName={`w-full bg-black text-white`}>
+              <div className="flex justify-center gap-3">
+                <div>FILTER AND SORT</div> <RiFilter3Line size={20} />
+              </div>
+            </MainButtons>
           </div>
         </div>
       </div>
@@ -231,7 +237,7 @@ const Collections = () => {
                       />
                     </svg>
                   </motion.button>
-                  <motion.button
+                  <motion.div
                     className="hidden text-[.8rem] lg:block absolute bottom-0 left-0 right-0 text-white"
                     variants={cartButtonVariants}
                   >
@@ -244,7 +250,7 @@ const Collections = () => {
                       className="w-full"
                       type="button"
                     />
-                  </motion.button>
+                  </motion.div>
                 </div>
                 <motion.div className="text-center pt-4">
                   <h5 className="uppercase text-[.7rem] text-gray-600">
@@ -259,9 +265,6 @@ const Collections = () => {
             ))}
           </motion.div>
         </div>
-      </div>
-      <div className={`hidden ${isFilterOpen && "block"}`}>
-        <FilterSlide />
       </div>
     </section>
   );

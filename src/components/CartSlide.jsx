@@ -251,9 +251,9 @@ const CartSlide = () => {
                   initial="hidden"
                   animate="visible"
                 >
-                  <p className="mt-2 text-sm">
+                  <div className="mt-2 text-sm">
                     <CartSlideExtension />
-                  </p>
+                  </div>
                 </motion.div>
               </motion.div>
             )}

@@ -1,23 +1,19 @@
 import React, { createContext, useState, useContext } from "react";
+
 const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+
   const handleFilterToggle = () => {
-    setMenuToggle((prev) => !prev);
+    setIsFilterOpen((prev) => !prev);
   };
 
-  const toggleFilter = () => {
-    setIsFilterOpen(!isFilterOpen);
-  };
-  const closeFilter = () => {
-    setIsFilterOpen(false);
-  };
 
   return (
     <FilterContext.Provider
-      value={{ handleFilterToggle, toggleFilter, isFilterOpen, closeFilter }}
+      value={{ handleFilterToggle, isFilterOpen }}
     >
       {children}
     </FilterContext.Provider>
